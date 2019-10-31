@@ -1,13 +1,10 @@
 export const initialStore = {
-    title:'',
-    // TODO: Should i put initial values here? 
-}
+  title: '',
+  // TODO: Should i put initial values here?
+};
 
+const visits = [];
 
-const visits = []
+const doctors = [];
 
-
-const doctors = []
-
-const procedures = []
-
+const procedures = [];
