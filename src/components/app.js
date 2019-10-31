@@ -1,14 +1,29 @@
 import React from "react";
+import {BrowserRouter, Link, Route, Switch} from 'react-router-dom'
 import { visits } from "../../fixtures";
 import { VisitsListContainer } from "./VisitsListContainer";
 import { NewEventForm } from "./NewVisitForm";
+import Home from './Home'
+
 
 
 export const App = () => {
 	return (
-		<>
-			<VisitsListContainer visits={visits}/>
-			<NewEventForm></NewEventForm>
-		</>
+		<BrowserRouter>
+		<Switch>
+			<Route exact path='/' component={Home}/>
+		</Switch>
+		{/* <ul>
+			
+			
+		</ul>
+
+
+
+
+
+			<VisitsListContainer visits={visits}/> */}
+			{/* <NewEventForm></NewEventForm> */}
+		</BrowserRouter>
 	);
 };
