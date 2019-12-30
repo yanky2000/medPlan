@@ -1,4 +1,5 @@
 export interface IPatient extends IPerson {
+  patientId: IUid;
   age: IAge;
 }
 
@@ -24,15 +25,15 @@ export interface IVisit {
   title: string;
   patiendId: IUid;
 
-  doctor: IDoctor;
+  doctorId: IUid;
   date: string; // TODO: change to Date
   time: string; // TODO: Change?
-  clinic: IClinic;
+  clinicId: IUid;
 
-  results: IVisitResults;
+  results: IVisitResult;
 }
 
-export interface IVisitResults {
+export interface IVisitResult {
   visitId: IUid;
   diagnosis: string;
   prescriptions: string;

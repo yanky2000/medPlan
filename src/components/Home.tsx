@@ -5,7 +5,7 @@ import { visits } from '../../fixtures';
 export default function Home() {
   return (
     <div>
-      <VisitsListContainer visits={visits} />
+      <VisitsListContainer visits={Object.values(visits)} />
     </div>
   );
 }
