@@ -1,9 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
-import { NewEventForm } from './NewVisitForm';
 import Home from './Home';
 import LoginForm from './LoginForm';
-import { VisitsListContainer } from './VisitsListContainer';
 
 export const App = () => {
   return (
@@ -21,9 +19,7 @@ export const App = () => {
       </ul>
       <Switch>
         <Route exact path="/" component={Home} />
-        {/* <Route exact path="/" component={VisitsListContainer} /> */}
-        {/* <Route exact path="/login" component={LoginForm} />
-        <Route exact path="/newEvent" component={NewEventForm} /> */}
+        <Route exact path="/login" component={LoginForm} />
       </Switch>
     </BrowserRouter>
   );
