@@ -20,8 +20,8 @@ export const App = () => {
         </li>
       </ul>
       <Switch>
-        {/* <Route exact path="/" component={Home} /> */}
-        <Route exact path="/" component={VisitsListContainer} />
+        <Route exact path="/" component={Home} />
+        {/* <Route exact path="/" component={VisitsListContainer} /> */}
         {/* <Route exact path="/login" component={LoginForm} />
         <Route exact path="/newEvent" component={NewEventForm} /> */}
       </Switch>

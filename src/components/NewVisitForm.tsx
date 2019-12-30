@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from './useForm';
 
 export const NewEventForm = () => {
-  const [values, changeHandler] = useForm(values);
+  const [values, changeHandler] = useForm();
 
   return (
     <div>

@@ -1,30 +1,35 @@
-import React from 'react';
-import { visits } from '../../fixtures';
+import * as React from 'react';
+import { IVisit } from '../models';
+import { Http2ServerRequest } from 'http2';
 
-export const VisitsListContainer = () => {
-  // TODO: split by current date
-  const upComingVisits = () => {
-    return visits.map(visit => {
-      if (!visit.requirements) {
-        return <div key={visit.id}>{visit.title}</div>;
-      }
-    });
-  };
+interface IProps {
+  visits: IVisit[]
+}
+export const VisitsListContainer: React.FunctionComponent<
+ IProps
+> =  props => {
+  const {visits} = props;
+  // console.log(Array.isArray(props.visits), props.visits);
+  const a = visits.map(a => <div>{a}</div>);
+  const upComingVisits =  visits.map(visit => {
+    const { visitId, title, date, clinic } = visit;
+    return (
+      <div key={visitId}>
+        <div>Title: {title}</div>
+        <div>Date: {date}</div>
+        <div>Clinic: {clinic.title}</div>
+      </div>
+    );
+  });
 
-  const lastVisits = () => {
-    return visits.map(visit => {
-      if (visit.requirements) {
-        return <div key={visit.id}>{visit.title}</div>;
-      }
-    });
-  };
+  const arr = [1, 2].map(number => <h1>{number}</h1>);
 
   return (
     <div>
       <h1> Upcoming Visits</h1>
-      {upComingVisits()}
-      <h2>Last Visits</h2>
-      {lastVisits() ? lastVisits() : 'no visits so far'}
+      {/* <ul>{upComingVisits}</ul> */}
+      {/* <div>{arr}</div> */}
+      <code>{JSON.stringify(visits)}</code>
     </div>
   );
 };

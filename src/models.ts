@@ -1,8 +1,18 @@
+export interface IPatient extends IPerson {
+  age: IAge;
+}
+
 export interface IDoctor extends IPerson {
   doctorId: IUid;
   specialization: string[] | string;
   title: string;
+  age?: IAge;
 }
+
+export type IHashMap<T> = {
+  [index: string]: T;
+};
+
 export interface IClinic {
   clinicId: IUid;
   title: string;
@@ -11,11 +21,13 @@ export interface IClinic {
 
 export interface IVisit {
   visitId: IUid;
+  title: string;
   patiendId: IUid;
-  doctorId: IUid;
-  date: Date;
+
+  doctor: IDoctor;
+  date: string; // TODO: change to Date
   time: string; // TODO: Change?
-  clinicId: IUid;
+  clinic: IClinic;
 
   results: IVisitResults;
 }
@@ -40,7 +52,7 @@ export type IUid = string;
 export interface IPerson {
   firstName: string;
   lastName: string;
-  age: IGender;
+  gender: IGender;
   contacts: IContact;
 }
 type IGender = 'Male' | 'Female';
@@ -58,3 +70,5 @@ export interface IAddress {
   address: string;
   zipCode: number;
 }
+
+type IAge = number;
