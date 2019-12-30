@@ -3,6 +3,7 @@ import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import { NewEventForm } from './NewVisitForm';
 import Home from './Home';
 import LoginForm from './LoginForm';
+import { VisitsListContainer } from './VisitsListContainer';
 
 export const App = () => {
   return (
@@ -19,9 +20,10 @@ export const App = () => {
         </li>
       </ul>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={LoginForm} />
-        <Route exact path="/newEvent" component={NewEventForm} />
+        {/* <Route exact path="/" component={Home} /> */}
+        <Route exact path="/" component={VisitsListContainer} />
+        {/* <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/newEvent" component={NewEventForm} /> */}
       </Switch>
     </BrowserRouter>
   );

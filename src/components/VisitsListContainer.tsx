@@ -1,6 +1,7 @@
 import React from 'react';
+import { visits } from '../../fixtures';
 
-export const VisitsListContainer = ({ visits }) => {
+export const VisitsListContainer = () => {
   // TODO: split by current date
   const upComingVisits = () => {
     return visits.map(visit => {
