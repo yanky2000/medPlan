@@ -4,8 +4,6 @@ import { visits } from '../../fixtures';
 
 export default function Home() {
   return (
-    <div>
-      <VisitsListContainer visits={Object.values(visits)} />
-    </div>
+        <VisitsListContainer visits={Object.values(visits)} />
   );
 }

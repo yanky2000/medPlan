@@ -63,7 +63,7 @@ const dumpVisitResult: IVisitResult = {
 
 const dumpVisit: IVisit = {
   visitId: ids.visit1,
-  title: 'visit one',
+  title: 'visit to dentist one',
   patiendId: ids.patient1,
   doctorId: ids.doctor1,
   date: '30/07/19',
@@ -109,5 +109,5 @@ export const patients: IHashMap<IPatient> = {
 
 export const visits: IHashMap<IVisit> = {
   [ids.visit1]: dumpVisit,
-  [ids.visit2]: { ...dumpVisit, visitId: ids.visit2, date: '5/10/19' },
+  [ids.visit2]: { ...dumpVisit, title: 'physician visits', visitId: ids.visit2, date: '5/10/19' },
 };
