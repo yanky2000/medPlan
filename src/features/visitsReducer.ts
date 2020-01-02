@@ -2,9 +2,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { visits } from '../../fixtures';
 import { IVisit, IHashMap } from '../models';
 import { IAppThunk } from '../reducers';
+import { string } from 'prop-types';
 
 export type IInitialState = {} | IHashMap<IVisit>
-const initialState: IInitialState = {};
+const initialState = new Map<string, IVisit>();
 
 const visitsSlice = createSlice({
   name: 'visits',
@@ -15,16 +16,13 @@ const visitsSlice = createSlice({
       return (state = { ...state, [visitId]: action.payload });
     },
     fetchVisitsSuccess: (state, action: PayloadAction<IHashMap<IVisit>>) => {
-      // const newState: IHashMap<IVisit> = JSON.parse(action.payload);
-      // console.log(action.payload)
-      state = action.payload;
+      state = new Map(Object.entries(action.payload));
       return state;
     },
     increment: (state, action) => {
       return state;
     },
     decrement: state => state,
-    fetchVisits: state => console.log('fetching')
   },
 });
 
@@ -34,9 +32,8 @@ export default visitsSlice.reducer;
 export const fetchVisits = (): IAppThunk => async dispatch => {
   try {
     const res = await fetch('http://localhost:3000/visits');
-    let data = await res.json();
-    // console.log('data is ', data)
-    dispatch(fetchVisitsSuccess(data.visits));
+    const data: IHashMap<IVisit> = await res.json();
+    dispatch(fetchVisitsSuccess(data));
   } catch {
     console.log('fetch failed!');
   }

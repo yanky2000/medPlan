@@ -11,31 +11,31 @@ export const VisitsListContainer: React.FC = props => {
     dispatch(fetchVisits());
   }, []);
 
-  const { visits } = useSelector((state: IRootState) => state);
-  const data = Object.values(visits);
   const dispatch = useDispatch();
 
-  const upComingVisits = data.map(visit => {
-    const { visitId, title, date, clinicId } = visit;
-    const clickHandler = () => console.log('clicked!');
-    return (
-      <div key={Date.now()}>
-        <div className="visit-container">
-          <Link to={`/visits/${visitId}`} key={visitId}>
+  const { visits } = useSelector((state: IRootState) => state);
+
+  const upComingVisits = Array.from(
+    visits.values(),
+    ({ visitId, title, date, clinicId }) => {
+      return (
+        <div className="visit-container" key={visitId}>
+          <Link to={`/visits/${visitId}`}>
             <div>Title: {title}</div>
           </Link>
           <div>Date: {date}</div>
           <div>Clinic Id: {clinicId}</div>
         </div>
-        <button onClick={clickHandler}>click</button>
-      </div>
-    );
-  });
+      );
+    }
+  );
 
+  const clickHandler = () => console.log('clicked!');
   return (
     <div>
       <h1>Visits</h1>
       <ul>{upComingVisits}</ul>
+      <button onClick={clickHandler}>Add Event</button>
     </div>
   );
 };
