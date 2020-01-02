@@ -10,14 +10,18 @@ export const VisitsListContainer: React.FunctionComponent<IProps> = props => {
   const { visits } = props;
   const upComingVisits = visits.map(visit => {
     const { visitId, title, date, clinicId } = visit;
+    const clickHandler = () => console.log('clicked!');
     return (
-      <Link to={`/visits/${visitId}`} key={visitId}>
-        <div className="visit-container">
-          <div>Title: {title}</div>
-          <div>Date: {date}</div>
-          <div>Clinic Id: {clinicId}</div>
-        </div>
-      </Link>
+      <>
+        <Link to={`/visits/${visitId}`} key={visitId}>
+          <div className="visit-container">
+            <div>Title: {title}</div>
+            <div>Date: {date}</div>
+            <div>Clinic Id: {clinicId}</div>
+          </div>
+        </Link>
+        <button onClick={clickHandler}>click</button>
+      </>
     );
   });
 

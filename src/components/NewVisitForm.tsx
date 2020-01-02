@@ -1,10 +1,24 @@
-// import * as React from 'react';
-// import { useForm } from './useForm';
+import React from 'react';
+import { useForm } from './useForm';
+import { connect } from 'react-redux';
+import { addVisit } from '../features/visitsReducer';
 
-// export const NewEventForm = () => {
-//   const [values, changeHandler] = useForm();
+const mapDispatch = { addVisit };
 
-//   return (
+const NewEventForm = ({addVisit}) => {
+  // const [values, changeHandler] = useForm();
+
+  const clickHandler = () => addVisit('some')
+
+  return (
+    <>
+  <h1>hello for add</h1>;
+  <button onClick={clickHandler}>click</button>
+  </>)
+};
+
+export default connect(null, mapDispatch)(NewEventForm)
+
 //     <div>
 //       <h1>Add New Event</h1>
 //       <ul>
