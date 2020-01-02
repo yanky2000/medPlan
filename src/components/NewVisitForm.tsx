@@ -1,23 +1,36 @@
-import React from 'react';
-import { useForm } from './useForm';
-import { connect } from 'react-redux';
-import { addVisit } from '../features/visitsReducer';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addVisit, fetchVisits } from '../features/visitsReducer';
+import { dumpVisit } from '../../fixtures';
+import { IRootState } from '../reducers';
 
 const mapDispatch = { addVisit };
 
-const NewEventForm = ({addVisit}) => {
+const NewEventForm = () => {
   // const [values, changeHandler] = useForm();
-
-  const clickHandler = () => addVisit('some')
-
+  const dispatch = useDispatch();
+  // const { visits } = useSelector((state: IRootState) => state);
+  const clickHandler = () => {
+    const newVisit = { ...dumpVisit, visitId: 'visit3' };
+    dispatch(addVisit(newVisit));
+  };
+  useEffect(() => {
+    // effect
+    dispatch(fetchVisits());
+    // cleanup
+  }, []);
   return (
     <>
-  <h1>hello for add</h1>;
-  <button onClick={clickHandler}>click</button>
-  </>)
+      <h1>hello for add</h1>
+      <button onClick={clickHandler}>click</button>
+    </>
+  );
 };
 
-export default connect(null, mapDispatch)(NewEventForm)
+// export default connect(
+//   null,
+//   mapDispatch
+// )(NewEventForm);
 
 //     <div>
 //       <h1>Add New Event</h1>
@@ -80,3 +93,4 @@ export default connect(null, mapDispatch)(NewEventForm)
 //     </div>
 //   );
 // };
+export default NewEventForm;

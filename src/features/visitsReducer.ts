@@ -1,46 +1,43 @@
-import {
-  createAction,
-  configureStore,
-  createReducer,
-  createSlice,
-} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { visits } from '../../fixtures';
+import { IVisit, IHashMap } from '../models';
+import { IAppThunk } from '../reducers';
 
-// Original approach: write the action type and action creator by hand
-const INCREMENT = 'INCREMENT';
-function incrementOriginal() {
-  return { type: INCREMENT };
-}
-// console.log(incrementOriginal());
-// {type: "INCREMENT"}
-// Or, use `createAction` to generate the action creator:
-const counterSlice = createSlice({
-  name: 'counter',
-  initialState: 0,
-  reducers: {
-    increment: (state, action) => {
-      console.log(action);
-      //  state + action.id,
-      return state;
-    },
-    decrement: state => state - 1,
-  },
-});
+export type IInitialState = {} | IHashMap<IVisit>
+const initialState: IInitialState = {};
 
 const visitsSlice = createSlice({
   name: 'visits',
-  initialState: visits,
+  initialState,
   reducers: {
-    addVisit: (state, action) => console.log(state, action),
+    addVisit: (state, action: PayloadAction<IVisit>): any => {
+      const { visitId } = action.payload;
+      return (state = { ...state, [visitId]: action.payload });
+    },
+    fetchVisitsSuccess: (state, action: PayloadAction<IHashMap<IVisit>>) => {
+      // const newState: IHashMap<IVisit> = JSON.parse(action.payload);
+      // console.log(action.payload)
+      state = action.payload;
+      return state;
+    },
     increment: (state, action) => {
-      console.log(action);
-      //  state + action.id,
       return state;
     },
     decrement: state => state,
+    fetchVisits: state => console.log('fetching')
   },
 });
 
-export const {addVisit} = visitsSlice.actions
+export const { addVisit, fetchVisitsSuccess } = visitsSlice.actions;
 export default visitsSlice.reducer;
 
+export const fetchVisits = (): IAppThunk => async dispatch => {
+  try {
+    const res = await fetch('http://localhost:3000/visits');
+    let data = await res.json();
+    // console.log('data is ', data)
+    dispatch(fetchVisitsSuccess(data.visits));
+  } catch {
+    console.log('fetch failed!');
+  }
+};

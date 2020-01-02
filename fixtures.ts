@@ -61,7 +61,7 @@ const dumpVisitResult: IVisitResult = {
   prescriptions: 'stay home for 3 days',
 };
 
-const dumpVisit: IVisit = {
+export const dumpVisit: IVisit = {
   visitId: ids.visit1,
   title: 'visit to dentist one',
   patiendId: ids.patient1,
