@@ -4,7 +4,7 @@ import Home from './Home';
 import LoginForm from './LoginForm';
 import { VisitDetails } from './VisitDetails';
 // import { store, counterSlice } from '../store';
-import NewEventForm from './NewVisitForm';
+import { NewEventForm } from './NewVisitForm';
 
 export const App = () => {
   // const clickHandler = () =>

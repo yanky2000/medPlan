@@ -25,14 +25,15 @@ export interface IVisit {
   title: string;
   patiendId: IUid;
 
-  doctorId: IUid;
+  // doctorId: IUid;
+  doctor: IDoctor;
   date: string; // TODO: change to Date
   time: string; // TODO: Change?
-  clinicId: IUid;
-
-  results: IVisitResult;
+  // clinicId: IUid;
+  clinic: IClinic;
+  comments?: string;
+  results?: IVisitResult;
 }
-
 export interface IVisitResult {
   visitId: IUid;
   diagnosis: string;

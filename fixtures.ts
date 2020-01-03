@@ -65,10 +65,12 @@ export const dumpVisit: IVisit = {
   visitId: ids.visit1,
   title: 'visit to dentist one',
   patiendId: ids.patient1,
-  doctorId: ids.doctor1,
+  doctor: dumpDoctor,
+  // doctorId: ids.doctor1,
   date: '30/07/19',
   time: '12:00',
-  clinicId: ids.clinic1,
+  clinic: dumpClinic,
+  // clinicId: ids.clinic1,
   results: dumpVisitResult,
 };
 export const doctors: IHashMap<IDoctor> = {
