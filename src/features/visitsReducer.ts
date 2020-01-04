@@ -3,22 +3,26 @@ import { visits } from '../../fixtures';
 import { IVisit, IHashMap, IUid } from '../models';
 import { IAppThunk, IRootState } from '../reducers';
 import axios from 'axios';
+
 export type IInitialState = {} | IHashMap<IVisit>;
-const initialState = new Map<string, IVisit>();
+
+// const initialState = new Map<string, IVisit>();
+const initialState: IInitialState = {};
 
 const visitsSlice = createSlice({
   name: 'visits',
   initialState,
   reducers: {
-    addVisit: (state, action: PayloadAction<IVisit>): IRootState => {
+    addVisit: (state, action: PayloadAction<IVisit>) => {
       const { visitId } = action.payload;
-      return (state = { ...state, [visitId]: action.payload });
+      state[visitId] = action.payload;
+      return state;
     },
     //     getVisit: (state, action: PayloadAction<IUid>) => {
     // return state.get(action.payload)
     //     },
     fetchVisitsSuccess: (state, action: PayloadAction<IHashMap<IVisit>>) => {
-      state = new Map(Object.entries(action.payload));
+      state = action.payload;
       return state;
     },
     increment: (state, action) => {
@@ -47,6 +51,7 @@ export const postNewVisit = (
 ): IAppThunk => async dispatch => {
   try {
     const req = await axios.post('http://localhost:3000/newvisit', newVisit);
+    console.log(req.data);
     dispatch(addVisit(req.data));
   } catch {
     console.log('posting new visit on server failed');

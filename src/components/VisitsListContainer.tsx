@@ -16,17 +16,15 @@ export const VisitsListContainer: React.FC = props => {
 
   const dispatch = useDispatch();
   const { visits } = useSelector((state: IRootState) => state);
-
-  const upComingVisits = Array.from(
-    visits.values(),
-    ({ visitId, title, date, clinicId }) => {
+  const upComingVisits = Object.values(visits).map(
+    ({ visitId, title, date, clinic }) => {
       return (
         <div className="visit-container" key={visitId}>
           <Link to={`/visits/${visitId}`}>
             <div>Title: {title}</div>
           </Link>
           <div>Date: {date}</div>
-          <div>Clinic Id: {clinicId}</div>
+          <div>Clinic: {clinic.title}</div>
         </div>
       );
     }

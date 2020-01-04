@@ -5,7 +5,6 @@ import { dumpVisit } from '../../fixtures';
 import { IRootState } from '../reducers';
 import { useForm } from './useForm';
 import Button from '@material-ui/core/Button'
-
 const mapDispatch = { addVisit };
 
 export const NewEventForm = () => {
