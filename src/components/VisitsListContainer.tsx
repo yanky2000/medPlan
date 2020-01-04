@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { IVisit } from '../models';
 import { useDispatch, useSelector } from 'react-redux';
-import './VisitListContainer.css';
+import './styles.css';
 import { Link } from 'react-router-dom';
 import { IRootState } from '../reducers';
 import { fetchVisits } from '../features/visitsReducer';
 import { NewEventForm } from './NewVisitForm';
+import { VisitItem } from './VisitItem';
+import Typography from '@material-ui/core/Typography';
 
 export const VisitsListContainer: React.FC = props => {
   const [isFormVisible, setIsFormVisible] = useState(true);
@@ -18,15 +20,7 @@ export const VisitsListContainer: React.FC = props => {
   const { visits } = useSelector((state: IRootState) => state);
   const upComingVisits = Object.values(visits).map(
     ({ visitId, title, date, clinic }) => {
-      return (
-        <div className="visit-container" key={visitId}>
-          <Link to={`/visits/${visitId}`}>
-            <div>Title: {title}</div>
-          </Link>
-          <div>Date: {date}</div>
-          <div>Clinic: {clinic.title}</div>
-        </div>
-      );
+      return <VisitItem visitId={visitId} key={visitId} />;
     }
   );
 
@@ -34,7 +28,9 @@ export const VisitsListContainer: React.FC = props => {
 
   return (
     <div>
-      <h1>Visits</h1>
+      <Typography component="h1" variant="h5">
+        Visits
+      </Typography>
       <ul>{upComingVisits}</ul>
       <button onClick={toggleFormVisibility}>
         {isFormVisible ? 'Close form' : 'Add Event'}

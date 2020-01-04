@@ -18,9 +18,14 @@ const visitsSlice = createSlice({
       state[visitId] = action.payload;
       return state;
     },
-    //     getVisit: (state, action: PayloadAction<IUid>) => {
-    // return state.get(action.payload)
-    //     },
+    deleteVisit: (state, action: PayloadAction<IUid>) => {
+      console.log('deleteing', action.payload)
+      delete state[action.payload];
+      return state;
+    },
+    // getVisit: (state, action: PayloadAction<IUid>) => {
+    // // return state.get(action.payload)
+    // //     },
     fetchVisitsSuccess: (state, action: PayloadAction<IHashMap<IVisit>>) => {
       state = action.payload;
       return state;
@@ -32,7 +37,7 @@ const visitsSlice = createSlice({
   },
 });
 
-export const { addVisit, fetchVisitsSuccess } = visitsSlice.actions;
+export const { addVisit, fetchVisitsSuccess, deleteVisit } = visitsSlice.actions;
 export default visitsSlice.reducer;
 
 // MiddleWares
@@ -50,8 +55,8 @@ export const postNewVisit = (
   newVisit: Partial<IVisit>
 ): IAppThunk => async dispatch => {
   try {
+    // TODO: need type for response
     const req = await axios.post('http://localhost:3000/newvisit', newVisit);
-    console.log(req.data);
     dispatch(addVisit(req.data));
   } catch {
     console.log('posting new visit on server failed');

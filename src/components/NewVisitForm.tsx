@@ -4,14 +4,14 @@ import { addVisit, fetchVisits, postNewVisit } from '../features/visitsReducer';
 import { dumpVisit } from '../../fixtures';
 import { IRootState } from '../reducers';
 import { useForm } from './useForm';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
 const mapDispatch = { addVisit };
 
 export const NewEventForm = () => {
   const { values, changeHandler } = useForm();
   const dispatch = useDispatch();
   // const { visits } = useSelector((state: IRootState) => state);
-  const clickHandler = (e) => {
+  const clickHandler = e => {
     e.preventDefault();
     const newVisit = { ...dumpVisit, ...values };
     dispatch(postNewVisit(newVisit));
@@ -84,7 +84,10 @@ export const NewEventForm = () => {
               />
             </li>
           </ul>
-          <Button variant='contained' color='primary' onClick={clickHandler}>click</Button>
+          <Button>Cancel</Button>
+          <Button variant="contained" color="primary" onClick={clickHandler}>
+            Save
+          </Button>
         </form>
       </div>
     </>

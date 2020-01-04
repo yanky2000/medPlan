@@ -5,23 +5,16 @@ import LoginForm from './LoginForm';
 import { VisitDetails } from './VisitDetails';
 // import { store, counterSlice } from '../store';
 import { NewEventForm } from './NewVisitForm';
+import { NavList } from './Nav';
+import { SimpleMenu } from './Menu';
 
 export const App = () => {
   // const clickHandler = () =>
   //   store.dispatch(counterSlice.actions.increment({ id: 11 }));
   return (
     <BrowserRouter>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          <Link to="/newEvent">Add new Event</Link>
-        </li>
-      </ul>
+      <SimpleMenu />
+      {/* <NavList /> */}
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={LoginForm} />
