@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
-import Home from './Home';
+import { Home } from './Home';
 import LoginForm from './LoginForm';
 import { VisitDetails } from './VisitDetails';
 // import { store, counterSlice } from '../store';

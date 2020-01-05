@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.html",
   "dependencies": {
+    "@fullcalendar/core": "^4.3.1",
+    "@fullcalendar/daygrid": "^4.3.0",
+    "@fullcalendar/interaction": "^4.3.0",
+    "@fullcalendar/react": "^4.3.0",
     "@material-ui/icons": "^4.5.1",
     "@reduxjs/toolkit": "^1.2.1",
     "axios": "^0.19.0",
@@ -31,6 +35,7 @@
     "lint-staged": "^9.4.2",
     "parcel-bundler": "^1.12.4",
     "prettier": "^1.18.2",
+    "sass": "^1.24.2",
     "typescript": "^3.7.4"
   },
   "scripts": {

@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { VisitsListContainer } from './VisitsListContainer';
-export default function Home() {
+import { Calendar } from './Calendar/Calendar';
+export const Home =()  => {
   return (
-        // <VisitsListContainer visits={Object.values(visits)} />
-        <VisitsListContainer />
+    <>
+      <VisitsListContainer />
+      <Calendar />
+    </>
   );
 }

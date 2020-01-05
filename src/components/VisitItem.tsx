@@ -25,8 +25,8 @@ export const VisitItem: React.FC<{ visitId: IUid }> = ({ visitId }) => {
           <p>Date: {date}</p>
           <p>Doctor: {doctor.firstName}</p>
           <p>Clinic: {clinic.title}</p>
-          <IconButton aria-label="delete" size="small">
-            <DeleteIcon onClick={handleDelete} fontSize="small"/>
+          <IconButton aria-label="delete" onClick={handleDelete} size="small">
+            <DeleteIcon  fontSize="small"/>
           </IconButton>
           {/* <Button
             variant="contained"
