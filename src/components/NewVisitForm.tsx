@@ -23,8 +23,6 @@ export const NewEventForm = () => {
   // }, []);
   return (
     <>
-      <h1>hello for add</h1>
-
       <div>
         <h1>Add New Event</h1>
         <form action="">

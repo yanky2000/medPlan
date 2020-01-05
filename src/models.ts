@@ -74,3 +74,13 @@ export interface IAddress {
 }
 
 type IAge = number;
+
+export interface Examination {
+  type: string;
+  title: string;
+}
+
+export interface Test {
+  title: string;
+  // frequency: 
+}

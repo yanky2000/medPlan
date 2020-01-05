@@ -11,13 +11,14 @@ export const Calendar: React.FC = () => {
   const handleDateClick = e => {
     console.log(e);
   };
-  console.log(Object.values(events));
   return (
-    <FullCalendar
-      defaultView="dayGridMonth"
-      dateClick={handleDateClick}
-      plugins={[dayGridPlugin, interactionPlugin]}
-      events={Object.values(events)}
-    />
+    <div className="calendar-container">
+      <FullCalendar
+        defaultView="dayGridMonth"
+        dateClick={handleDateClick}
+        plugins={[dayGridPlugin, interactionPlugin]}
+        events={Object.values(events)}
+      />
+    </div>
   );
 };
