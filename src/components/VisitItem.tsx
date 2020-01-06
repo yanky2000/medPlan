@@ -25,6 +25,8 @@ export const VisitItem: React.FC<{ visitId: IUid }> = ({ visitId }) => {
           <p>Date: {date}</p>
           <p>Doctor: {doctor.firstName}</p>
           <p>Clinic: {clinic.title}</p>
+          {/* <label htmlFor="file">File</label>
+          <input type="file" name="file" id="file"/> */}
           <IconButton aria-label="delete" onClick={handleDelete} size="small">
             <DeleteIcon  fontSize="small"/>
           </IconButton>

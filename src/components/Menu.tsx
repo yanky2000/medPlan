@@ -2,28 +2,36 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { useHistory } from 'react-router-dom';
 
-export  function SimpleMenu() {
+export function SimpleMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const history = useHistory();
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = e => {
+    console.log(e);
+    history.push('/newevent');
     setAnchorEl(null);
   };
-
+  const links = [
+    { label: 'Home', path: '/' },
+    { label: 'My Profile', path: '/profile' },
+    { label: 'Doctors', path: '/profile' },
+    { label: 'Logout', path: '/logout' },
+  ];
   return (
     <div>
       <Button
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}
-        variant='outlined'
+        variant="outlined"
       >
         Menu
-    </Button>
+      </Button>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}

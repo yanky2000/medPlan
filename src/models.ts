@@ -54,13 +54,13 @@ export type IUid = string;
 export interface IPerson {
   firstName: string;
   lastName: string;
-  gender: IGender;
+  gender?: IGender;
   contacts: IContact;
 }
 type IGender = 'Male' | 'Female';
 
 export interface IContact {
-  address: IAddress;
+  address?: IAddress;
   email: string;
   phone: number;
 }
@@ -75,12 +75,18 @@ export interface IAddress {
 
 type IAge = number;
 
-export interface Examination {
-  type: string;
-  title: string;
-}
-
 export interface Test {
   title: string;
-  // frequency: 
+  validUntill?: Date;
 }
+export interface IFile {
+  name: string;
+}
+export interface IUser extends IPerson {
+  userId: IUid;
+  login: string;
+  password: IPassword;
+  userData?: any;
+  avatar?: any;
+}
+export type IPassword = string;

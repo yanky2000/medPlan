@@ -10,7 +10,7 @@ import { VisitItem } from './VisitItem';
 import Typography from '@material-ui/core/Typography';
 
 export const VisitsListContainer: React.FC = props => {
-  const [isFormVisible, setIsFormVisible] = useState(true);
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
   useEffect(() => {
     dispatch(fetchVisits());
@@ -20,7 +20,11 @@ export const VisitsListContainer: React.FC = props => {
   const { visits } = useSelector((state: IRootState) => state);
   const upComingVisits = Object.values(visits).map(
     ({ visitId, title, date, clinic }) => {
-      return <VisitItem visitId={visitId} key={visitId} />;
+      return (
+        <Link to={`visits/${visitId}`}>
+          <VisitItem visitId={visitId} key={visitId} />
+        </Link>
+      );
     }
   );
 
@@ -29,7 +33,7 @@ export const VisitsListContainer: React.FC = props => {
   return (
     <div>
       <Typography component="h1" variant="h5">
-        Visits
+        Upcoming examinations
       </Typography>
       <ul>{upComingVisits}</ul>
       <button onClick={toggleFormVisibility}>

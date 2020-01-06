@@ -20,6 +20,7 @@ export const App = () => {
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/visits/:visitId" component={VisitDetails} />
         <Route exact path="/newEvent" component={NewEventForm} />
+        <Route exact path="/profile" component={NewEventForm} />
       </Switch>
     </BrowserRouter>
   );

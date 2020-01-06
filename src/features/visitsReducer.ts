@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { visits } from '../../fixtures';
 import { IVisit, IHashMap, IUid } from '../models';
-import { IAppThunk, IRootState } from '../reducers';
+import { IAppThunk } from '../reducers';
 import axios from 'axios';
 
 export type IInitialState = {} | IHashMap<IVisit>;
@@ -58,6 +57,20 @@ export const postNewVisit = (
     // TODO: need type for response
     const req = await axios.post('http://localhost:3000/newvisit', newVisit);
     dispatch(addVisit(req.data));
+  } catch {
+    console.log('posting new visit on server failed');
+  }
+};
+
+export const uploadFileToServer = (
+ file: any
+): IAppThunk => async dispatch => {
+  try {
+    // TODO: need type for response
+    const req = await axios.post('http://localhost:3000/addfile', file, {});
+    console.log('posting file', req.data)
+
+    // dispatch(addVisit(req.data));
   } catch {
     console.log('posting new visit on server failed');
   }

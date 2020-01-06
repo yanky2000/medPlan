@@ -3,12 +3,13 @@ import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { IRootState } from '../reducers';
 import Button from '@material-ui/core/Button';
+import { uploadFileToServer } from '../features/visitsReducer';
 
 export const VisitDetails = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const { visitId } = useParams();
-  const { title, date, doctor } = useSelector((state: IRootState) =>
-    state.visits[visitId]
+  const { title, date, doctor } = useSelector(
+    (state: IRootState) => state.visits[visitId]
   );
   const dispatch = useDispatch();
   const handleUpload = event => {
@@ -16,8 +17,12 @@ export const VisitDetails = () => {
     setSelectedFile(event.target.files[0]);
   };
   const uploadFile = () => {
-
-  }
+    console.log(selectedFile)
+    const data = new FormData();
+    data.append('file', selectedFile);
+    dispatch(uploadFileToServer(data))
+    // setSelectedFile(e.target.files[0]);
+  };
   return (
     <div>
       <h1>{title}</h1>
