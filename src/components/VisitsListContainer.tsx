@@ -21,7 +21,7 @@ export const VisitsListContainer: React.FC = props => {
   const upComingVisits = Object.values(visits).map(
     ({ visitId, title, date, clinic }) => {
       return (
-        <Link to={`visits/${visitId}`}>
+        <Link key={visitId} to={`visits/${visitId}`}>
           <VisitItem visitId={visitId} key={visitId} />
         </Link>
       );

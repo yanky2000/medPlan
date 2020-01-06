@@ -11,9 +11,9 @@ export function SimpleMenu() {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = e => {
-    console.log(e);
-    history.push('/newevent');
+  const handleClose = path => e => {
+    console.log(path);
+    history.push(path);
     setAnchorEl(null);
   };
   const links = [
@@ -22,6 +22,11 @@ export function SimpleMenu() {
     { label: 'Doctors', path: '/profile' },
     { label: 'Logout', path: '/logout' },
   ];
+  const menuItems = links.map(link => (
+    <MenuItem key={link.label} onClick={handleClose(link.path)}>
+      {link.label}
+    </MenuItem>
+  ));
   return (
     <div>
       <Button
@@ -39,9 +44,10 @@ export function SimpleMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        {menuItems}
+        {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleClose}>Logout</MenuItem> */}
       </Menu>
     </div>
   );

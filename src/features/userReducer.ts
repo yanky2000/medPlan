@@ -3,10 +3,7 @@ import { IVisit, IUser, IHashMap, IUid } from '../models';
 import { IAppThunk } from '../reducers';
 import axios from 'axios';
 
-export type IInitialState = {} | IHashMap<IVisit>;
-
-// const initialState = new Map<string, IVisit>();
-const initialState: IUser | {} = {};
+const initialState: IUser | null = null;
 
 const userSlice = createSlice({
   name: 'user',
@@ -20,27 +17,21 @@ const userSlice = createSlice({
       delete state[action.payload];
       return state;
     },
-    fetchVisitsSuccess: (state, action: PayloadAction<IHashMap<IVisit>>) => {
-      state = action.payload;
-      return state;
+    fetchUserDataSuccess: (userStateSlice, action: PayloadAction<IUser>) => {
+     userStateSlice = action.payload;
+      return userStateSlice;
     },
   },
 });
 
-export const {
-  addUser,
-  fetchVisitsSuccess,
-  deleteUser,
-} = userSlice.actions;
-export default userSlice.reducer;
 
 // MiddleWares
 export const fetchUserData = (userId: IUid): IAppThunk => async dispatch => {
   try {
     // TODO: need type for response
-    const req = await axios.get('http://localhost:3000/getUserData');
-    console.log(req);
-    // dispatch(addUser(req.data));
+    const req = await axios.get('http://localhost:3000/userData');
+    console.log('user data fetched!', req);
+    dispatch(fetchUserDataSuccess(req.data));
   } catch {
     console.log('fetching new user from server failed');
   }
@@ -57,3 +48,6 @@ export const registerNewUser = (
     console.log('posting new visit on server failed');
   }
 };
+
+export const { addUser, deleteUser, fetchUserDataSuccess } = userSlice.actions;
+export default userSlice.reducer;

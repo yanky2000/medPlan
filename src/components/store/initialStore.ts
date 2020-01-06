@@ -1,5 +1,5 @@
 export const initialStore = {
-  title: '',
+  // title: '',
   // TODO: Should i put initial values here?
 };
 

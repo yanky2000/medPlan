@@ -1,14 +1,23 @@
-
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { IRootState } from '../reducers';
+import { fetchUserData } from '../features/userReducer';
 
 export const Profile = () => {
-    const user = useSelector((state: IRootState) => state.user)
-    if(!user)
-    return (
-        <div>
+  const user = useSelector((state: IRootState) => state.user);
+  const dispatch = useDispatch();
 
-            </div>
-    )
-}
+  if (!user) {
+    dispatch(fetchUserData('user1'));
+    return <h1>No data</h1>;
+  }
+
+  return (
+    <div>
+      <ul>
+        <li>First Name: {user.firstName}</li>
+        <li>Last Name: {user.lastName}</li>
+      </ul>
+    </div>
+  );
+};

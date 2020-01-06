@@ -7,11 +7,17 @@ import { VisitDetails } from './VisitDetails';
 import { NewEventForm } from './NewVisitForm';
 import { NavList } from './Nav';
 import { SimpleMenu } from './Menu';
+import { Profile } from './Profile';
+import { Header } from './Header';
+import { RegisterForm } from './RegisterForm';
 
 export const App = () => {
   // const clickHandler = () =>
   //   store.dispatch(counterSlice.actions.increment({ id: 11 }));
   return (
+    <>
+    <Header />
+    <RegisterForm />
     <BrowserRouter>
       <SimpleMenu />
       {/* <NavList /> */}
@@ -20,8 +26,9 @@ export const App = () => {
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/visits/:visitId" component={VisitDetails} />
         <Route exact path="/newEvent" component={NewEventForm} />
-        <Route exact path="/profile" component={NewEventForm} />
+        <Route exact path="/profile" component={Profile} />
       </Switch>
     </BrowserRouter>
+    </>
   );
 };
