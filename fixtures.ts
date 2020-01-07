@@ -26,7 +26,7 @@ const dumpAddress = {
     country: 'Russia',
     city: 'Moscow',
     zipCode: 123456,
-    address: 'Pokrovka 21-14',
+    street: 'Pokrovka 21-14',
   },
 };
 
@@ -70,6 +70,7 @@ export const dumpVisit: IVisit = {
   date: '30/07/19',
   time: '12:00',
   clinic: dumpClinic,
+  location: dumpClinic,
   // clinicId: ids.clinic1,
   results: dumpVisitResult,
 };
@@ -88,7 +89,7 @@ export const doctors: IHashMap<IDoctor> = {
         country: 'Russia',
         city: 'Moscow',
         zipCode: 123456,
-        address: 'Pokrovka 21-14',
+        street: 'Pokrovka 21-14',
       },
     },
   },

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { IVisit } from '../models';
 import { useDispatch, useSelector } from 'react-redux';
 import './styles.css';
 import { Link } from 'react-router-dom';
 import { IRootState } from '../reducers';
 import { fetchVisits } from '../features/visitsReducer';
-import { NewEventForm } from './NewVisitForm';
+import { NewEventForm } from './newVisitForm/NewVisitForm';
 import { VisitItem } from './VisitItem';
 import Typography from '@material-ui/core/Typography';
 
@@ -40,6 +39,7 @@ export const VisitsListContainer: React.FC = props => {
         {isFormVisible ? 'Close form' : 'Add Event'}
       </button>
       {isFormVisible && <NewEventForm />}
+      {/* { <NewEventForm hidden={isFormVisible}/>} */}
     </div>
   );
 };

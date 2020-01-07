@@ -29,11 +29,12 @@ export interface IVisit {
   doctor: IDoctor;
   date: string; // TODO: change to Date
   time: string; // TODO: Change?
-  // clinicId: IUid;
+  location: ILocation;
   clinic: IClinic;
   comments?: string;
   results?: IVisitResult;
 }
+export type ILocation = IClinic | string
 export interface IVisitResult {
   visitId: IUid;
   diagnosis: string;
@@ -69,7 +70,7 @@ export interface IAddress {
   country: string;
   city: string;
   state?: string;
-  address: string;
+  street: string;
   zipCode: number;
 }
 
