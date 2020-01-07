@@ -9,8 +9,8 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    addUser: (state, action: PayloadAction<IUser>) => {
-      return state;
+    addUser: (userStateSlice, action: PayloadAction<IUser>) => {
+      return action.payload;
     },
     deleteUser: (state, action: PayloadAction<IUid>) => {
       console.log('deleteing', action.payload);
@@ -43,7 +43,7 @@ export const registerNewUser = (
   try {
     // TODO: need type for response
     const req = await axios.post('http://localhost:3000/adduser', newUser);
-    // dispatch(addUser(req.data));
+    dispatch(addUser(req.data));
   } catch {
     console.log('posting new visit on server failed');
   }

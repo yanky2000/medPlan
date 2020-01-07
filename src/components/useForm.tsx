@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import { initialStore } from './store/initialStore';
+
+export const initialStore = {
+  // title: '',
+  // TODO: Should i put initial values here?
+};
 
 export const useForm = () => {
   const [values, setValues] = useState(initialStore);
@@ -13,3 +17,10 @@ export const useForm = () => {
 
   return { values, changeHandler };
 };
+
+
+const visits = [];
+
+const doctors = [];
+
+const procedures = [];

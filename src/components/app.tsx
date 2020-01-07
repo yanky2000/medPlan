@@ -17,7 +17,6 @@ export const App = () => {
   return (
     <>
     <Header />
-    <RegisterForm />
     <BrowserRouter>
       <SimpleMenu />
       {/* <NavList /> */}
@@ -27,6 +26,7 @@ export const App = () => {
         <Route exact path="/visits/:visitId" component={VisitDetails} />
         <Route exact path="/newEvent" component={NewEventForm} />
         <Route exact path="/profile" component={Profile} />
+        <Route exact path="/register" component={RegisterForm} />
       </Switch>
     </BrowserRouter>
     </>
