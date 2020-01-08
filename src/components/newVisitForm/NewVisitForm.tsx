@@ -126,7 +126,6 @@ export const NewEventForm = () => {
                       label="Doctor"
                       margin="normal"
                       variant="outlined"
-                  // onChange={changeHandler}
                       name="doctor"
                       required
                       fullWidth

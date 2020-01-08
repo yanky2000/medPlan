@@ -13,6 +13,7 @@ export const useForm = () => {
   const [values, setValues] = useState(initialStore);
 
   const changeHandler = (e, value?: string) => {
+    console.log('set', e.currentTarget.dataset.optionIndex);
     let name = e.target.name || getName(e.currentTarget.id);
     function getName(string: string) {
       if (string.includes('location')) return 'location';
@@ -27,4 +28,3 @@ export const useForm = () => {
 
   return { values, changeHandler };
 };
-
