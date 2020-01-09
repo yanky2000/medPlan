@@ -1,15 +1,15 @@
-import React from 'react';
-import { IUid } from '../models';
-import { useSelector, useDispatch } from 'react-redux';
-import { IRootState } from '../reducers';
-import DeleteIcon from '@material-ui/icons/Delete';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import { deleteVisit } from '../features/visitsReducer';
-import IconButton from '@material-ui/core/IconButton';
+import React from "react";
+import { IUid } from "../models";
+import { useSelector, useDispatch } from "react-redux";
+import { IRootState } from "../reducers";
+import DeleteIcon from "@material-ui/icons/Delete";
+import Button from "@material-ui/core/Button";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import { deleteVisit } from "../features/visitsReducer";
+import IconButton from "@material-ui/core/IconButton";
 export const VisitItem: React.FC<{ visitId: IUid }> = ({ visitId }) => {
-  const { title, date, clinic, doctor } = useSelector(
+  const { title, date, clinic, location, doctor } = useSelector(
     (state: IRootState) => state.visits[visitId]
   );
   const dispatch = useDispatch();
@@ -24,11 +24,12 @@ export const VisitItem: React.FC<{ visitId: IUid }> = ({ visitId }) => {
           <li>{title}</li>
           <p>Date: {date}</p>
           <p>Doctor: {doctor.firstName}</p>
-          <p>Clinic: {clinic.title}</p>
+          {/* <p>Clinic: {clinic.title}</p> */}
+          <p>Location: {location}</p>
           {/* <label htmlFor="file">File</label>
           <input type="file" name="file" id="file"/> */}
           <IconButton aria-label="delete" onClick={handleDelete} size="small">
-            <DeleteIcon  fontSize="small"/>
+            <DeleteIcon fontSize="small" />
           </IconButton>
           {/* <Button
             variant="contained"

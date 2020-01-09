@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
-import { useDispatch } from 'react-redux';
-import { useForm } from './useForm';
-import { registerNewUser } from '../features/userReducer';
-import { User1 } from '../../../serv/src/tempData';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from "react";
+import Button from "@material-ui/core/Button";
+import { useDispatch } from "react-redux";
+import { useForm } from "./useForm";
+import { registerNewUser } from "../features/userReducer";
+import { User1 } from "../../../serverPlan/src/tempData";
+import { useHistory } from "react-router-dom";
 
 export const RegisterForm: React.FC = () => {
   const { values, changeHandler } = useForm();
@@ -17,7 +17,7 @@ export const RegisterForm: React.FC = () => {
     e.preventDefault();
     // TODO: Replace dump types for prod
     dispatch(registerNewUser({ ...User1, ...values }));
-    history.push('/');
+    history.push("/");
   };
   return (
     <form>

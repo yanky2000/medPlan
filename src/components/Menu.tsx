@@ -1,8 +1,8 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import { useHistory } from 'react-router-dom';
+import React from "react";
+import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import { useHistory } from "react-router-dom";
 
 export function SimpleMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -17,10 +17,10 @@ export function SimpleMenu() {
     setAnchorEl(null);
   };
   const links = [
-    { label: 'Home', path: '/' },
-    { label: 'My Profile', path: '/profile' },
-    { label: 'Doctors', path: '/profile' },
-    { label: 'Logout', path: '/logout' },
+    { label: "Home", path: "/" },
+    { label: "My Profile", path: "/profile" },
+    { label: "Doctors", path: "/doctors" },
+    { label: "Logout", path: "/logout" }
   ];
   const menuItems = links.map(link => (
     <MenuItem key={link.label} onClick={handleClose(link.path)}>
