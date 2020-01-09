@@ -35,8 +35,8 @@ export const DoctorsList: React.FC = () => {
             <TableCell>Doctors</TableCell>
             <TableCell align="right">Specialization</TableCell>
             <TableCell align="right">Tel</TableCell>
-            <TableCell align="right">Location</TableCell>
             <TableCell align="right">Clinic</TableCell>
+            <TableCell align="right">Location</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

@@ -8,7 +8,8 @@ export interface IDoctor extends IPerson {
   specialization: string[] | string;
   title: string;
   age?: IAge;
-  clinic?: IClinic;
+  clinic: IClinic;
+  some?: number;
 }
 
 export type IHashMap<T> = {
@@ -19,6 +20,7 @@ export interface IClinic {
   clinicId: IUid;
   title: string;
   contacts: IContact;
+  doctors: IDoctor[];
 }
 
 export interface IVisit {

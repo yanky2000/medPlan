@@ -1,11 +1,9 @@
 import React from "react";
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Home } from "./Home";
-import LoginForm from "./LoginForm";
+import { LoginForm } from "./LoginForm";
 import { VisitDetails } from "./VisitDetails";
-// import { store, counterSlice } from '../store';
 import { NewEventForm } from "./newVisitForm/NewVisitForm";
-import { NavList } from "./Nav";
 import { SimpleMenu } from "./Menu";
 import { Profile } from "./Profile";
 import { Header } from "./Header";

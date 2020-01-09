@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import { useDispatch } from "react-redux";
 import { useForm } from "./useForm";
 import { registerNewUser } from "../features/userReducer";
-import { User1 } from "../../../serverPlan/src/tempData";
+import { User1 } from "../../../serverPlan/src/fixtures/users";
 import { useHistory } from "react-router-dom";
 
 export const RegisterForm: React.FC = () => {

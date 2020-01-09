@@ -3,7 +3,7 @@ import { IDoctor } from "../models";
 import { TableRow, TableCell } from "@material-ui/core";
 
 export const DoctorItem: React.FC<{ doctor: IDoctor }> = ({ doctor }) => {
-  const { firstName, lastName, specialization, contacts } = doctor;
+  const { firstName, lastName, clinic, specialization, contacts } = doctor;
   return (
     <TableRow key={doctor.lastName}>
       <TableCell component="th" scope="row">
@@ -11,7 +11,8 @@ export const DoctorItem: React.FC<{ doctor: IDoctor }> = ({ doctor }) => {
       </TableCell>
       <TableCell align="right">{specialization}</TableCell>
       <TableCell align="right">{contacts.phone}</TableCell>
-      <TableCell align="right">{contacts.address.street}</TableCell>
+      <TableCell align="right">{clinic.title}</TableCell>
+      <TableCell align="right">{clinic.contacts.address.street}</TableCell>
     </TableRow>
   );
 };
