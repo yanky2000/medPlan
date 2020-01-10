@@ -5,11 +5,9 @@ export interface IPatient extends IPerson {
 
 export interface IDoctor extends IPerson {
   doctorId: IUid;
-  specialization: string[] | string;
+  specialization: string[];
   title: string;
-  age?: IAge;
-  clinic: IClinic;
-  some?: number;
+  clinicIds: IUid[];
 }
 
 export type IHashMap<T> = {
