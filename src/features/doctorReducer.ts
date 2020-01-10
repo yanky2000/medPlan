@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IVisit, IUser, IHashMap, IUid, IDoctor } from "../models";
 import { IAppThunk } from "../reducers";
 import axios from "axios";
+import { convertArrToObj } from "../../utils";
 
 const initialState: IHashMap<IDoctor> | null = null;
 
@@ -24,7 +25,9 @@ const doctorsSlice = createSlice({
       action: PayloadAction<IHashMap<IDoctor>>
     ) => {
       // TODO: How to handle sw and data sync? merge dbs?
-      userStateSlice = action.payload;
+      const doctorsArr = convertArrToObj(action.payload);
+
+      userStateSlice = doctorsArr;
       return userStateSlice;
     }
   }

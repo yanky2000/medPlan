@@ -57,7 +57,7 @@ export interface IPerson {
   firstName: string;
   lastName: string;
   gender?: IGender;
-  contacts: IContact;
+  contacts?: IContact;
 }
 type IGender = "Male" | "Female";
 
