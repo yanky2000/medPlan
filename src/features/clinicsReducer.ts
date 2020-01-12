@@ -11,7 +11,7 @@ const clinicsSlice = createSlice({
   reducers: {
     addClinic: (clinicStateSlice, action: PayloadAction<IClinic>) => {
       const newClinic = action.payload;
-      clinicStateSlice[newClinic.clinicId] = newClinic;
+      clinicStateSlice[newClinic.uid] = newClinic;
       return clinicStateSlice;
     },
     deleteClinic: (state, action: PayloadAction<IUid>) => {

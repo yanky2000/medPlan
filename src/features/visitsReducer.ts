@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IVisit, IHashMap, IUid } from '../models';
-import { IAppThunk } from '../reducers';
-import axios from 'axios';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IVisit, IHashMap, IUid } from "../models";
+import { IAppThunk } from "../reducers";
+import axios from "axios";
 
 export type IInitialState = {} | IHashMap<IVisit>;
 
@@ -9,16 +9,16 @@ export type IInitialState = {} | IHashMap<IVisit>;
 const initialState: IInitialState = {};
 
 const visitsSlice = createSlice({
-  name: 'visits',
+  name: "visits",
   initialState,
   reducers: {
     addVisit: (state, action: PayloadAction<IVisit>) => {
-      const { visitId } = action.payload;
-      state[visitId] = action.payload;
+      const { uid } = action.payload;
+      state[uid] = action.payload;
       return state;
     },
     deleteVisit: (state, action: PayloadAction<IUid>) => {
-      console.log('deleteing', action.payload)
+      console.log("deleteing", action.payload);
       delete state[action.payload];
       return state;
     },
@@ -32,21 +32,25 @@ const visitsSlice = createSlice({
     increment: (state, action) => {
       return state;
     },
-    decrement: state => state,
-  },
+    decrement: state => state
+  }
 });
 
-export const { addVisit, fetchVisitsSuccess, deleteVisit } = visitsSlice.actions;
+export const {
+  addVisit,
+  fetchVisitsSuccess,
+  deleteVisit
+} = visitsSlice.actions;
 export default visitsSlice.reducer;
 
 // MiddleWares
 export const fetchVisits = (): IAppThunk => async dispatch => {
   try {
-    const res = await fetch('http://localhost:3000/visits');
+    const res = await fetch("http://localhost:3000/visits");
     const data: IHashMap<IVisit> = await res.json();
     dispatch(fetchVisitsSuccess(data));
   } catch {
-    console.log('fetch failed!');
+    console.log("fetch failed!");
   }
 };
 
@@ -55,23 +59,21 @@ export const postNewVisit = (
 ): IAppThunk => async dispatch => {
   try {
     // TODO: need type for response
-    const req = await axios.post('http://localhost:3000/newvisit', newVisit);
+    const req = await axios.post("http://localhost:3000/newvisit", newVisit);
     dispatch(addVisit(req.data));
   } catch {
-    console.log('posting new visit on server failed');
+    console.log("posting new visit on server failed");
   }
 };
 
-export const uploadFileToServer = (
- file: any
-): IAppThunk => async dispatch => {
+export const uploadFileToServer = (file: any): IAppThunk => async dispatch => {
   try {
     // TODO: need type for response
-    const req = await axios.post('http://localhost:3000/addfile', file, {});
-    console.log('posting file', req.data)
+    const req = await axios.post("http://localhost:3000/addfile", file, {});
+    console.log("posting file", req.data);
 
     // dispatch(addVisit(req.data));
   } catch {
-    console.log('posting new visit on server failed');
+    console.log("posting new visit on server failed");
   }
 };

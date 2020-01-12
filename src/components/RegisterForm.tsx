@@ -3,7 +3,6 @@ import Button from "@material-ui/core/Button";
 import { useDispatch } from "react-redux";
 import { useForm } from "./useForm";
 import { registerNewUser } from "../features/userReducer";
-import { User1 } from "../../../serverPlan/src/fixtures/users";
 import { useHistory } from "react-router-dom";
 
 export const RegisterForm: React.FC = () => {
@@ -16,7 +15,7 @@ export const RegisterForm: React.FC = () => {
   const handleClick = e => {
     e.preventDefault();
     // TODO: Replace dump types for prod
-    dispatch(registerNewUser({ ...User1, ...values }));
+    // dispatch(registerNewUser(values));
     history.push("/");
   };
   return (

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { postNewVisit } from '../../features/visitsReducer';
-import { dumpVisit } from '../../../fixtures';
-import { IRootState } from '../../reducers';
-import { useForm } from '../useForm';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import { fetchDoctors } from '../../features/doctorReducer';
-import { fetchClinics } from '../../features/clinicsReducer';
-import './newVisitForm.css';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { postNewVisit } from "../../features/visitsReducer";
+import { dumpVisit } from "../../../fixtures";
+import { IRootState } from "../../reducers";
+import { useForm } from "../useForm";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import { fetchDoctors } from "../../features/doctorReducer";
+import { fetchClinics } from "../../features/clinicsReducer";
+import "./newVisitForm.css";
 
 export const NewEventForm = () => {
   const { values, changeHandler } = useForm();
@@ -42,9 +42,7 @@ export const NewEventForm = () => {
     Object.values(clinics).map(clinic => {
       const {
         title,
-        contacts: {
-          address: { street },
-        },
+        address: { street }
       } = clinic;
       return `${title}  - ${street}`;
     });
@@ -53,7 +51,7 @@ export const NewEventForm = () => {
     e.preventDefault();
     const newVisit = { ...dumpVisit, ...values };
     console.log(values);
-    dispatch(postNewVisit(newVisit));
+    // dispatch(postNewVisit(newVisit));
   };
 
   return (
@@ -89,7 +87,7 @@ export const NewEventForm = () => {
                   required
                   // className={classes.textField}
                   InputLabelProps={{
-                    shrink: true,
+                    shrink: true
                   }}
                 />
               </li>

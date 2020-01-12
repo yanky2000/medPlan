@@ -1,13 +1,14 @@
 export interface IPatient extends IPerson {
-  patientId: IUid;
-  age: IAge;
+  id: IUid;
+  dob: Date;
 }
 
 export interface IDoctor extends IPerson {
-  doctorId: IUid;
-  specialization: string[];
+  uid: IUid;
+  specialization: string;
   title: string;
-  clinicIds: IUid[];
+  clinics: IUid[];
+  contacts?: IContact;
 }
 
 export type IHashMap<T> = {
@@ -15,29 +16,32 @@ export type IHashMap<T> = {
 };
 
 export interface IClinic {
-  clinicId: IUid;
+  uid: IUid;
   title: string;
+  address: IAddress;
+  doctors: IUid[];
   contacts: IContact;
-  doctors: IDoctor[];
+  // phone?: IPhoneNumber;
+  // email?: IEmailAddress;
 }
 
 export interface IVisit {
-  visitId: IUid;
+  uid: IUid;
   title: string;
-  patiendId: IUid;
-
-  // doctorId: IUid;
-  doctor: IDoctor;
+  patient: IUid;
+  doctor: IUid;
   date: string; // TODO: change to Date
   time: string; // TODO: Change?
-  location: ILocation;
-  clinic: IClinic;
+  clinic: IUid;
   comments?: string;
   results?: IVisitResult;
+  files?: Buffer;
 }
 export type ILocation = IClinic | string;
+
 export interface IVisitResult {
-  visitId: IUid;
+  id: IUid;
+  visit: IUid;
   diagnosis: string;
   prescriptions: string;
   prescriptedMedications?: IMedication[];
@@ -57,14 +61,13 @@ export interface IPerson {
   firstName: string;
   lastName: string;
   gender?: IGender;
-  contacts?: IContact;
+  address?: IAddress;
 }
 type IGender = "Male" | "Female";
 
 export interface IContact {
-  address?: IAddress;
-  email: string;
-  phone: number;
+  email: IEmailAddress;
+  phone: IPhoneNumber;
 }
 
 export interface IAddress {
@@ -74,8 +77,6 @@ export interface IAddress {
   street: string;
   zipCode: number;
 }
-
-type IAge = number;
 
 export interface Test {
   title: string;
@@ -89,6 +90,9 @@ export interface IUser extends IPerson {
   login: string;
   password: IPassword;
   userData?: any;
-  avatar?: any;
+  contacts: IContact;
 }
 export type IPassword = string;
+
+export type IPhoneNumber = number;
+export type IEmailAddress = string;
