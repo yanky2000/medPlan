@@ -24,7 +24,7 @@ export interface IClinic {
 }
 
 export interface IVisit {
-  uid: IUid;
+  _id: IUid;
   title: string;
   user: IUid;
   doctor: IUid;

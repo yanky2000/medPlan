@@ -22,10 +22,10 @@ export const VisitsListContainer: React.FC = props => {
   const dispatch = useDispatch();
   const { visits } = useSelector((state: IRootState) => state);
   const upComingVisits = Object.values(visits).map(visit => {
-    const { uid } = visit;
+    const { _id } = visit;
     return (
-      <Link key={uid} to={`visits/${uid}`}>
-        <VisitItem visit={visit} key={uid} />
+      <Link key={_id} to={`visits/${_id}`}>
+        <VisitItem visit={visit} key={_id} />
       </Link>
     );
   });

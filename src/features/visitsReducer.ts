@@ -1,3 +1,4 @@
+import { convertArrToObj } from "./../../utils";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IVisit, IHashMap, IUid } from "../models";
 import { IAppThunk } from "../reducers";
@@ -13,8 +14,8 @@ const visitsSlice = createSlice({
   initialState,
   reducers: {
     addVisit: (state, action: PayloadAction<IVisit>) => {
-      const { uid } = action.payload;
-      state[uid] = action.payload;
+      const { _id } = action.payload;
+      state[_id] = action.payload;
       return state;
     },
     deleteVisit: (state, action: PayloadAction<IUid>) => {
@@ -26,7 +27,7 @@ const visitsSlice = createSlice({
     // // return state.get(action.payload)
     // //     },
     fetchVisitsSuccess: (state, action: PayloadAction<IHashMap<IVisit>>) => {
-      state = action.payload;
+      state = convertArrToObj(action.payload);
       return state;
     },
     increment: (state, action) => {

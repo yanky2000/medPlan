@@ -10,15 +10,15 @@ import { deleteVisit } from "../features/visitsReducer";
 import IconButton from "@material-ui/core/IconButton";
 
 export const VisitItem: React.FC<{ visit: IVisit }> = ({ visit }) => {
-  const { uid, title, date, clinic, doctor } = visit;
+  const { _id, title, date, clinic, doctor } = visit;
 
   const dispatch = useDispatch();
   const handleDelete = () => {
-    dispatch(deleteVisit(uid));
+    dispatch(deleteVisit(_id));
   };
 
   return (
-    <Card key={uid}>
+    <Card key={_id}>
       <CardContent>
         <ul>
           <li>{title}</li>
