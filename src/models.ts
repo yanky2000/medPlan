@@ -21,20 +21,18 @@ export interface IClinic {
   address: IAddress;
   doctors: IUid[];
   contacts: IContact;
-  // phone?: IPhoneNumber;
-  // email?: IEmailAddress;
 }
 
 export interface IVisit {
   uid: IUid;
   title: string;
-  patient: IUid;
+  user: IUid;
   doctor: IUid;
   date: string; // TODO: change to Date
   time: string; // TODO: Change?
   clinic: IUid;
   comments?: string;
-  results?: IVisitResult;
+  results?: IVisitResult[];
   files?: Buffer;
 }
 export type ILocation = IClinic | string;
@@ -44,9 +42,9 @@ export interface IVisitResult {
   visit: IUid;
   diagnosis: string;
   prescriptions: string;
-  prescriptedMedications?: IMedication[];
-  addons?: any;
-  followUpVisitDate?: Date;
+  // prescriptedMedications?: IMedication[];
+  // files?: any;
+  // followUpVisitDate?: Date;
 }
 
 export interface IMedication {
@@ -86,10 +84,10 @@ export interface IFile {
   name: string;
 }
 export interface IUser extends IPerson {
-  userId: IUid;
+  uid: IUid;
   login: string;
   password: IPassword;
-  userData?: any;
+  // userData?: any;
   contacts: IContact;
 }
 export type IPassword = string;

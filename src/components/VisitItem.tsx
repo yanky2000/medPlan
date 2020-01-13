@@ -1,5 +1,5 @@
 import React from "react";
-import { IUid } from "../models";
+import { IUid, IVisit } from "../models";
 import { useSelector, useDispatch } from "react-redux";
 import { IRootState } from "../reducers";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -8,24 +8,24 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { deleteVisit } from "../features/visitsReducer";
 import IconButton from "@material-ui/core/IconButton";
-export const VisitItem: React.FC<{ visitId: IUid }> = ({ visitId }) => {
-  const { title, date, clinic, location, doctor } = useSelector(
-    (state: IRootState) => state.visits[visitId]
-  );
+
+export const VisitItem: React.FC<{ visit: IVisit }> = ({ visit }) => {
+  const { uid, title, date, clinic, doctor } = visit;
+
   const dispatch = useDispatch();
   const handleDelete = () => {
-    dispatch(deleteVisit(visitId));
+    dispatch(deleteVisit(uid));
   };
 
   return (
-    <Card key={visitId}>
+    <Card key={uid}>
       <CardContent>
         <ul>
           <li>{title}</li>
           <p>Date: {date}</p>
-          <p>Doctor: {doctor.firstName}</p>
+          {/* <p>Doctor: {doctor.firstName}</p> */}
           {/* <p>Clinic: {clinic.title}</p> */}
-          <p>Location: {location}</p>
+          {/* <p>Location: {location}</p> */}
           {/* <label htmlFor="file">File</label>
           <input type="file" name="file" id="file"/> */}
           <IconButton aria-label="delete" onClick={handleDelete} size="small">

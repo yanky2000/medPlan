@@ -21,15 +21,14 @@ export const VisitsListContainer: React.FC = props => {
 
   const dispatch = useDispatch();
   const { visits } = useSelector((state: IRootState) => state);
-  const upComingVisits = Object.values(visits).map(
-    ({ uid, title, date, clinic }) => {
-      return (
-        <Link key={uid} to={`visits/${uid}`}>
-          <VisitItem visitId={uid} key={uid} />
-        </Link>
-      );
-    }
-  );
+  const upComingVisits = Object.values(visits).map(visit => {
+    const { uid } = visit;
+    return (
+      <Link key={uid} to={`visits/${uid}`}>
+        <VisitItem visit={visit} key={uid} />
+      </Link>
+    );
+  });
 
   const toggleFormVisibility = () => setIsFormVisible(!isFormVisible);
 
