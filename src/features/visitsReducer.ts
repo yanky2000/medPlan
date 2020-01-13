@@ -26,7 +26,7 @@ const visitsSlice = createSlice({
     // getVisit: (state, action: PayloadAction<IUid>) => {
     // // return state.get(action.payload)
     // //     },
-    fetchVisitsSuccess: (state, action: PayloadAction<IHashMap<IVisit>>) => {
+    fetchVisitsSuccess: (state, action: PayloadAction<IVisit[]>) => {
       state = convertArrToObj(action.payload);
       return state;
     },
@@ -48,7 +48,7 @@ export default visitsSlice.reducer;
 export const fetchVisits = (): IAppThunk => async dispatch => {
   try {
     const res = await fetch("http://localhost:3000/visits");
-    const data: IHashMap<IVisit> = await res.json();
+    const data: IVisit[] = await res.json();
     dispatch(fetchVisitsSuccess(data));
   } catch {
     console.log("fetch failed!");
