@@ -9,7 +9,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { IRootState } from "../reducers";
 import { useSelector } from "react-redux";
-import { DoctorItem } from "./DoctorItem";
+import { ClinicItem } from "./ClinicItem";
 
 const useStyles = makeStyles({
   table: {
@@ -17,31 +17,29 @@ const useStyles = makeStyles({
   }
 });
 
-export const DoctorsList: React.FC = () => {
-  // TODO: Deal with styles ts error
+export const ClinicsList: React.FC = () => {
   const classes = useStyles({
     table: {
       minWidth: 650
     }
   }); // eslint-disable-line
-  const doctors = Object.values(
-    useSelector((state: IRootState) => state.doctors)
+  const clinics = Object.values(
+    useSelector((state: IRootState) => state.clinics)
   );
   return (
     <TableContainer component={Paper}>
       <Table stickyHeader className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Doctors</TableCell>
-            <TableCell align="right">Specialization</TableCell>
+            <TableCell>Clinics</TableCell>
+            <TableCell align="right">Street</TableCell>
             <TableCell align="right">Tel</TableCell>
-            <TableCell align="right">Clinic</TableCell>
-            <TableCell align="right">Location</TableCell>
+            <TableCell align="right">City</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {doctors.map(doctor => (
-            <DoctorItem key={doctor._id} doctor={doctor} />
+          {clinics.map(clinic => (
+            <ClinicItem key={clinic._id} clinic={clinic} />
           ))}
         </TableBody>
       </Table>

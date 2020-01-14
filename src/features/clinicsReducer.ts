@@ -1,3 +1,4 @@
+import { convertArrToObj } from "./../../utils";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IHashMap, IUid, IClinic } from "../models";
 import { IAppThunk } from "../reducers";
@@ -21,10 +22,11 @@ const clinicsSlice = createSlice({
     },
     fetchClinicsListSuccess: (
       clinicStateSlice,
-      action: PayloadAction<IHashMap<IClinic>>
+      action: PayloadAction<IClinic[]>
     ) => {
       // TODO: How to handle sw and data sync? merge dbs?
-      clinicStateSlice = action.payload;
+      const clinics = convertArrToObj(action.payload);
+      clinicStateSlice = clinics;
       return clinicStateSlice;
     }
   }

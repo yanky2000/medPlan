@@ -4,11 +4,10 @@ export interface IPatient extends IPerson {
 }
 
 export interface IDoctor extends IPerson {
-  uid: IUid;
+  _id: IUid;
   specialization: string;
   title: string;
   clinics: IUid[];
-  contacts?: IContact;
 }
 
 export type IHashMap<T> = {
@@ -16,7 +15,8 @@ export type IHashMap<T> = {
 };
 
 export interface IClinic {
-  uid: IUid;
+  _id: string;
+  uid?: IUid;
   title: string;
   address: IAddress;
   doctors: IUid[];
@@ -28,7 +28,7 @@ export interface IVisit {
   title: string;
   user: IUid;
   doctor: IUid;
-  date: string; // TODO: change to Date
+  date: Date; // TODO: change to Date
   time: string; // TODO: Change?
   clinic: IUid;
   comments?: string;
@@ -58,7 +58,9 @@ export type IUid = string;
 export interface IPerson {
   firstName: string;
   lastName: string;
+  fullName: string;
   gender?: IGender;
+  contacts?: Partial<IContact>;
   address?: IAddress;
 }
 type IGender = "Male" | "Female";
@@ -88,7 +90,6 @@ export interface IUser extends IPerson {
   login: string;
   password: IPassword;
   // userData?: any;
-  contacts: IContact;
   visits?: IVisit[];
   results?: IVisitResult[];
 }
@@ -96,3 +97,5 @@ export type IPassword = string;
 
 export type IPhoneNumber = number;
 export type IEmailAddress = string;
+export type INoId<M> = Pick<M, Exclude<keyof M, "_id">>;
+export type IPropsObj = Partial<IClinic> | Partial<IDoctor>;

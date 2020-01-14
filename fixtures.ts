@@ -63,6 +63,16 @@ const dumpPatient: IPatient = {
 //   diagnosis: 'flu',
 //   prescriptions: 'stay home for 3 days',
 // };
+export const dumpVisit = {
+  title: "blood test",
+  user: "",
+  doctor: "",
+  clinic: "",
+  date: "2020-01-09",
+  time: "11:00",
+  comments: "some new comments",
+  results: []
+};
 
 // export const dumpVisit: IVisit = {
 //   id: ids.visit1,

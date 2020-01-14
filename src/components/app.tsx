@@ -9,6 +9,7 @@ import { Profile } from "./Profile";
 import { Header } from "./Header";
 import { RegisterForm } from "./RegisterForm";
 import { DoctorsList } from "./DoctorsList";
+import { ClinicsList } from "./ClinicsList";
 import { SignUp } from "./SignUp";
 
 export const App = () => {
@@ -30,7 +31,7 @@ export const App = () => {
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/register" component={RegisterForm} />
           <Route exact path="/doctors" component={DoctorsList} />
-          <Route exact path="/clinics" component={DoctorsList} />
+          <Route exact path="/clinics" component={ClinicsList} />
         </Switch>
       </BrowserRouter>
     </>

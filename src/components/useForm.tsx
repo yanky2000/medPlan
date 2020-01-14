@@ -1,28 +1,24 @@
-import { useState } from 'react';
+import { useState } from "react";
+import { getName } from "../../utils";
 
-export const initialStore = {
-  title: '',
-  login: '',
-  date: new Date(),
-  location: '',
-  doctor: '',
+export const formState = {
+  title: "",
+  login: "",
+  clinic: "",
+  date: "",
+  doctor: ""
   // TODO: Should i put initial values here?
 };
 
 export const useForm = () => {
-  const [values, setValues] = useState(initialStore);
+  const [values, setValues] = useState(formState);
 
+  // console.log('values', values)
   const changeHandler = (e, value?: string) => {
-    console.log('set', e.currentTarget.dataset.optionIndex);
     let name = e.target.name || getName(e.currentTarget.id);
-    function getName(string: string) {
-      if (string.includes('location')) return 'location';
-      else if (string.includes('doctor')) return 'doctor';
-      else return '';
-    }
     setValues({
       ...values,
-      [name]: e.target.value || value,
+      [name]: e.target.value || value
     });
   };
 

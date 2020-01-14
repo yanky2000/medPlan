@@ -7,9 +7,9 @@ import { uploadFileToServer } from "../features/visitsReducer";
 
 export const VisitDetails = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const { _id } = useParams();
+  const { visitId } = useParams();
   const { title, date, doctor } = useSelector(
-    (state: IRootState) => state.visits[_id]
+    (state: IRootState) => state.visits[visitId]
   );
   const dispatch = useDispatch();
   const handleUpload = event => {

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postNewVisit } from "../../features/visitsReducer";
-import { dumpVisit } from "../../../fixtures";
 import { IRootState } from "../../reducers";
 import { useForm } from "../useForm";
 import Button from "@material-ui/core/Button";
@@ -10,6 +9,8 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import { fetchDoctors } from "../../features/doctorReducer";
 import { fetchClinics } from "../../features/clinicsReducer";
 import "./newVisitForm.css";
+import { getIdByFieldContent } from "../../../utils";
+import { IVisit, INoId } from "../../models";
 
 export const NewEventForm = () => {
   const { values, changeHandler } = useForm();
@@ -33,25 +34,38 @@ export const NewEventForm = () => {
   const doctorsList =
     doctors &&
     Object.values(doctors).map(doctor => {
-      const { firstName, lastName, specialization } = doctor;
-      return `${firstName} ${lastName} - ${specialization}`;
+      return doctor.fullName;
+      // return getFullNameAndSpecialization(doctor)
     });
 
   const clinicsList =
     clinics &&
     Object.values(clinics).map(clinic => {
-      const {
-        title,
-        address: { street }
-      } = clinic;
-      return `${title}  - ${street}`;
+      return clinic.title;
+      // const {
+      //   title,
+      //   address: { street }
+      // } = clinic;
+      // return `${title}  - ${street}`;
     });
 
   const clickHandler = e => {
     e.preventDefault();
-    const newVisit = { ...dumpVisit, ...values };
-    console.log(values);
-    // dispatch(postNewVisit(newVisit));
+    const clinicId = getIdByFieldContent([
+      { title: values.clinic },
+      Object.values(clinics)
+    ]);
+    const doctorId = getIdByFieldContent([
+      { fullName: values.doctor },
+      Object.values(doctors)
+    ]);
+
+    const newVisit: INoId<IVisit> = {
+      ...values,
+      doctor: doctorId,
+      clinic: clinicId
+    };
+    dispatch(postNewVisit(newVisit));
   };
 
   return (
@@ -85,6 +99,7 @@ export const NewEventForm = () => {
                   defaultValue="2019-05-24T10:30"
                   variant="outlined"
                   required
+                  onChange={changeHandler}
                   // className={classes.textField}
                   InputLabelProps={{
                     shrink: true
@@ -95,17 +110,17 @@ export const NewEventForm = () => {
               {/* TODO: input time separately from date */}
               <li>
                 <Autocomplete
-                  id="location"
-                  freeSolo
+                  id="clinic"
+                  // freeSolo
                   options={clinicsList}
                   onChange={changeHandler}
                   renderInput={params => (
                     <TextField
                       {...params}
-                      label="Location"
+                      label="Clinic"
                       margin="normal"
                       variant="outlined"
-                      name="location"
+                      name="clinic"
                       required
                       fullWidth
                     />
@@ -115,7 +130,7 @@ export const NewEventForm = () => {
               <li>
                 <Autocomplete
                   id="doctor"
-                  freeSolo
+                  // freeSolo
                   options={doctorsList}
                   onChange={changeHandler}
                   renderInput={params => (
@@ -147,6 +162,7 @@ export const NewEventForm = () => {
               </li>
             </ul>
             <Button>Cancel</Button>
+            {/* TODO: need validation!  */}
             <Button variant="contained" color="primary" onClick={clickHandler}>
               Save
             </Button>

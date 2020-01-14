@@ -22,7 +22,7 @@ const doctorsSlice = createSlice({
     },
     fetchDoctorsListSuccess: (
       userStateSlice,
-      action: PayloadAction<IHashMap<IDoctor>>
+      action: PayloadAction<IDoctor[]>
     ) => {
       // TODO: How to handle sw and data sync? merge dbs?
       const doctorsArr = convertArrToObj(action.payload);

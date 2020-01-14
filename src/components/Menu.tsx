@@ -20,6 +20,7 @@ export function SimpleMenu() {
     { label: "Home", path: "/" },
     { label: "My Profile", path: "/profile" },
     { label: "Doctors", path: "/doctors" },
+    { label: "Clinics", path: "/clinics" },
     { label: "Logout", path: "/logout" }
   ];
   const menuItems = links.map(link => (
