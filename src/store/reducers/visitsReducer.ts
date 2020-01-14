@@ -1,6 +1,6 @@
-import { convertArrToObj } from "./../../utils";
+import { convertArrToObj } from "../../utils/utils";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IVisit, IHashMap, IUid } from "../models";
+import { IVisit, IHashMap, IUid } from "../../types/models";
 import { IAppThunk } from "../reducers";
 import axios from "axios";
 

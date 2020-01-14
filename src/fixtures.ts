@@ -6,7 +6,7 @@ import {
   IHashMap,
   IPatient,
   IVisitResult
-} from "./src/models";
+} from "./types/models";
 
 const ids = {
   patient1: "patient1",

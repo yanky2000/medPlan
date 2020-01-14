@@ -1,15 +1,14 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { App } from './components/app';
-import { Provider } from 'react-redux';
+import { App } from "./components/app";
+import { Provider } from "react-redux";
 // import { store } from './store';
-import { configureStore } from '@reduxjs/toolkit';
-import { rootReducer } from './reducers';
+import { configureStore } from "@reduxjs/toolkit";
+import { rootReducer } from "./store/reducers";
 
 const store = configureStore({
-  reducer: rootReducer,
-})
-
+  reducer: rootReducer
+});
 
 export const Root = () => {
   return (

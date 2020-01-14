@@ -12,18 +12,10 @@ export function getName(string: string) {
   else if (string.includes("doctor")) return "doctor";
   else return "";
 }
-// export function getFullNameAndSpecialization(doctor: IDoctor) {
-//   const { firstName, lastName, specialization } = doctor;
-//   return `${firstName} ${lastName} - ${specialization}`;
-// }
 
 export type ISearch<K> = [Partial<K>, K[]];
 
-export const getIdByFieldContent = (
-  propsTuple: ISearch<IDoctor | IClinic>
-  // propsObj: Partial<typeof formState>,
-  // dataObj: IDoctor[] | IClinic[]
-) => {
+export const getIdByFieldContent = (propsTuple: ISearch<IDoctor | IClinic>) => {
   let result;
   const [propKey, dataSet] = propsTuple;
   // doc case

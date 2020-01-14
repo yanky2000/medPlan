@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getName } from "../../utils";
+import { getName } from "../../utils/utils";
 
 export const formState = {
   title: "",

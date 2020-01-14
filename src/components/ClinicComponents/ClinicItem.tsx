@@ -1,5 +1,5 @@
 import React from "react";
-import { IClinic } from "../models";
+import { IClinic } from "../../types/models";
 import { TableRow, TableCell } from "@material-ui/core";
 
 export const ClinicItem: React.FC<{ clinic: IClinic }> = ({ clinic }) => {

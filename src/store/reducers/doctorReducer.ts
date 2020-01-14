@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IVisit, IUser, IHashMap, IUid, IDoctor } from "../models";
+import { IVisit, IUser, IHashMap, IUid, IDoctor } from "../../types/models";
 import { IAppThunk } from "../reducers";
 import axios from "axios";
-import { convertArrToObj } from "../../utils";
+import { convertArrToObj } from "../../utils/utils";
 
 const initialState: IHashMap<IDoctor> | null = null;
 

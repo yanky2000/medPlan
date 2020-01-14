@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postNewVisit } from "../../features/visitsReducer";
-import { IRootState } from "../../reducers";
-import { useForm } from "../useForm";
+import { postNewVisit } from "../../store/reducers/visitsReducer";
+import { IRootState } from "../../store/reducers";
+import { useForm } from "../common/useForm";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { fetchDoctors } from "../../features/doctorReducer";
-import { fetchClinics } from "../../features/clinicsReducer";
+import { fetchDoctors } from "../../store/reducers/doctorReducer";
+import { fetchClinics } from "../../store/reducers/clinicsReducer";
 import "./newVisitForm.css";
-import { getIdByFieldContent } from "../../../utils";
-import { IVisit, INoId } from "../../models";
+import { getIdByFieldContent } from "../../utils/utils";
+import { IVisit, INoId } from "../../types/models";
 
 export const NewEventForm = () => {
   const { values, changeHandler } = useForm();
@@ -20,6 +20,8 @@ export const NewEventForm = () => {
 
   const doctors = useSelector((state: IRootState) => state.doctors);
   const clinics = useSelector((state: IRootState) => state.clinics);
+  const currentUser = useSelector((state: IRootState) => state.user);
+
   useEffect(() => {
     if (!doctors) {
       dispatch(fetchDoctors());
@@ -62,9 +64,11 @@ export const NewEventForm = () => {
 
     const newVisit: INoId<IVisit> = {
       ...values,
+      // user: currentUser["_id"],
       doctor: doctorId,
       clinic: clinicId
     };
+    console.log("user adding ", newVisit);
     dispatch(postNewVisit(newVisit));
   };
 

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
 import { Link } from "react-router-dom";
-import { IRootState } from "../reducers";
-import { fetchVisits } from "../features/visitsReducer";
-import { NewEventForm } from "./newVisitForm/NewVisitForm";
+import { IRootState } from "../../store/reducers";
+import { fetchVisits } from "../../store/reducers/visitsReducer";
+import { NewEventForm } from "../newVisitForm/NewVisitForm";
 import { VisitItem } from "./VisitItem";
 import Typography from "@material-ui/core/Typography";
-import { fetchDoctors } from "../features/doctorReducer";
-import { fetchClinics } from "../features/clinicsReducer";
+import { fetchDoctors } from "../../store/reducers/doctorReducer";
+import { fetchClinics } from "../../store/reducers/clinicsReducer";
 
 export const VisitsListContainer: React.FC = props => {
   const [isFormVisible, setIsFormVisible] = useState(false);

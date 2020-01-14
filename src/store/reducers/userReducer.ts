@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IVisit, IUser, IHashMap, IUid } from "../models";
+import { IVisit, IUser, IHashMap, IUid } from "../../types/models";
 import { IAppThunk } from "../reducers";
 import axios from "axios";
 

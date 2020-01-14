@@ -1,5 +1,5 @@
 import React from "react";
-import { IDoctor } from "../models";
+import { IDoctor } from "../../types/models";
 import { TableRow, TableCell } from "@material-ui/core";
 
 export const DoctorItem: React.FC<{ doctor: IDoctor }> = ({ doctor }) => {

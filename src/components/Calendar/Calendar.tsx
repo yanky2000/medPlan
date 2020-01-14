@@ -1,10 +1,10 @@
-import React from 'react';
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin from '@fullcalendar/interaction';
-import './main.scss'; // webpack must be configured to do this
-import { useSelector } from 'react-redux';
-import { IRootState } from '../../reducers';
+import React from "react";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import "./main.scss"; // webpack must be configured to do this
+import { useSelector } from "react-redux";
+import { IRootState } from "../../store/reducers";
 
 export const Calendar: React.FC = () => {
   const events = useSelector((state: IRootState) => state.visits);

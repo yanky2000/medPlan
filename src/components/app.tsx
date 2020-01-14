@@ -2,14 +2,14 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Home } from "./Home";
 import { SignIn } from "./SignIn";
-import { VisitDetails } from "./VisitDetails";
+import { VisitDetails } from "./VisitComponents/VisitDetails";
 import { NewEventForm } from "./newVisitForm/NewVisitForm";
-import { SimpleMenu } from "./Menu";
+import { SimpleMenu } from "./common/Menu";
 import { Profile } from "./Profile";
-import { Header } from "./Header";
+import { Header } from "./common/Header";
 import { RegisterForm } from "./RegisterForm";
-import { DoctorsList } from "./DoctorsList";
-import { ClinicsList } from "./ClinicsList";
+import { DoctorsList } from "./DoctorComponents/DoctorsList";
+import { ClinicsList } from "./ClinicComponents/ClinicsList";
 import { SignUp } from "./SignUp";
 
 export const App = () => {

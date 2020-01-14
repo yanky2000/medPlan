@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import { useDispatch } from "react-redux";
-import { useForm } from "./useForm";
-import { registerNewUser } from "../features/userReducer";
+import { useForm } from "./common/useForm";
+import { registerNewUser } from "../store/reducers/userReducer";
 import { useHistory } from "react-router-dom";
 
 export const RegisterForm: React.FC = () => {

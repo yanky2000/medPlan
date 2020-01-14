@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { IRootState } from "../reducers";
+import { IRootState } from "../../store/reducers";
 import Button from "@material-ui/core/Button";
-import { uploadFileToServer } from "../features/visitsReducer";
+import { uploadFileToServer } from "../../store/reducers/visitsReducer";
 
 export const VisitDetails = () => {
   const [selectedFile, setSelectedFile] = useState(null);
