@@ -84,11 +84,13 @@ export interface IFile {
   name: string;
 }
 export interface IUser extends IPerson {
-  uid: IUid;
+  _id: IUid;
   login: string;
   password: IPassword;
   // userData?: any;
   contacts: IContact;
+  visits?: IVisit[];
+  results?: IVisitResult[];
 }
 export type IPassword = string;
 

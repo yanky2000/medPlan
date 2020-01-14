@@ -22,14 +22,15 @@ export const App = () => {
         {/* <NavList /> */}
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/home" component={Home} />
+          {/* <Route exact path="/home" component={Home} />
           <Route exact path="/signin" component={SignIn} />
-          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/signup" component={SignUp} /> */}
           <Route exact path="/visits/:visitId" component={VisitDetails} />
           <Route exact path="/newEvent" component={NewEventForm} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/register" component={RegisterForm} />
           <Route exact path="/doctors" component={DoctorsList} />
+          <Route exact path="/clinics" component={DoctorsList} />
         </Switch>
       </BrowserRouter>
     </>
