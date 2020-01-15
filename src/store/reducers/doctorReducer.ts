@@ -1,3 +1,4 @@
+import { INoId } from "./../../types/models";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IVisit, IUser, IHashMap, IUid, IDoctor } from "../../types/models";
 import { IAppThunk } from "../reducers";
@@ -45,7 +46,9 @@ export const fetchDoctors = (): IAppThunk => async dispatch => {
   }
 };
 
-export const postNewDoctor = (newDoc: IDoctor): IAppThunk => async dispatch => {
+export const postNewDoctor = (
+  newDoc: INoId<IDoctor>
+): IAppThunk => async dispatch => {
   try {
     // TODO: need type for response
     const req = await axios.post("http://localhost:3000/adddoctor", newDoc);

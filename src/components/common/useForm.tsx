@@ -8,7 +8,13 @@ export const formState = {
   date: "",
   doctor: "",
   specialization: "",
-  comments: ""
+  comments: "",
+  email: "",
+  phone: "",
+  country: "",
+  city: "",
+  street: "",
+  zipCode: 0
   // TODO: Should i put initial values here?
 };
 

@@ -19,7 +19,6 @@ export const NewDoctorForm = () => {
 
   const dispatch = useDispatch();
 
-  const doctors = useSelector((state: IRootState) => state.doctors);
   const clinics = useSelector((state: IRootState) => state.clinics);
 
   useEffect(() => {
@@ -48,10 +47,10 @@ export const NewDoctorForm = () => {
       Object.values(clinics)
     ]);
 
-    const { title, specialization, comments, clinic } = values;
     const newDoctor: INoId<IDoctor> = {
       ...values,
-      clinics: [clinicId]
+      clinics: [clinicId],
+      contacts: { email: values.email, phone: values.phone }
 
       // user: currentUser["_id"],
     };
@@ -118,6 +117,20 @@ export const NewDoctorForm = () => {
                   // helperText="Some important text"
                   variant="outlined"
                   required
+                />
+              </li>
+              <li>
+                <TextField
+                  // error={errors.email && touched.email}
+                  label="email"
+                  name="email"
+                  // className={classes.textField}
+                  value={values.email}
+                  onChange={changeHandler}
+                  // onBlur={handleBlur}
+                  // helperText={(errors.email && touched.email) && errors.email}
+                  margin="normal"
+                  variant="outlined"
                 />
               </li>
               {/* TODO: input time separately from date */}

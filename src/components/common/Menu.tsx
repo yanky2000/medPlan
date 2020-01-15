@@ -12,7 +12,6 @@ export function SimpleMenu() {
   };
 
   const handleClose = path => e => {
-    console.log(path);
     history.push(path);
     setAnchorEl(null);
   };

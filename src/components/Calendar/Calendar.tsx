@@ -9,7 +9,7 @@ import { IRootState } from "../../store/reducers";
 export const Calendar: React.FC = () => {
   const events = useSelector((state: IRootState) => state.visits);
   const handleDateClick = e => {
-    console.log(e);
+    console.log("date selected for ", e);
   };
   return (
     <div className="calendar-container">

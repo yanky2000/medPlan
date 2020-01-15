@@ -10,6 +10,7 @@ import Paper from "@material-ui/core/Paper";
 import { IRootState } from "../../store/reducers";
 import { useSelector } from "react-redux";
 import { ClinicItem } from "./ClinicItem";
+import { NewClinicForm } from "./NewClinic";
 
 const useStyles = makeStyles({
   table: {
@@ -27,22 +28,25 @@ export const ClinicsList: React.FC = () => {
     useSelector((state: IRootState) => state.clinics)
   );
   return (
-    <TableContainer component={Paper}>
-      <Table stickyHeader className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Clinics</TableCell>
-            <TableCell align="right">Street</TableCell>
-            <TableCell align="right">Tel</TableCell>
-            <TableCell align="right">City</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {clinics.map(clinic => (
-            <ClinicItem key={clinic._id} clinic={clinic} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <>
+      <TableContainer component={Paper}>
+        <Table stickyHeader className={classes.table} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Clinics</TableCell>
+              <TableCell align="right">Street</TableCell>
+              <TableCell align="right">Tel</TableCell>
+              <TableCell align="right">City</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {clinics.map(clinic => (
+              <ClinicItem key={clinic._id} clinic={clinic} />
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <NewClinicForm />
+    </>
   );
 };

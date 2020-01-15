@@ -1,3 +1,4 @@
+import { INoId } from "./../../types/models";
 import { convertArrToObj } from "../../utils/utils";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IHashMap, IUid, IClinic } from "../../types/models";
@@ -45,11 +46,11 @@ export const fetchClinics = (): IAppThunk => async dispatch => {
 };
 
 export const postNewClinic = (
-  newClionic: IClinic
+  newClinic: INoId<IClinic>
 ): IAppThunk => async dispatch => {
   try {
     // TODO: need type for response
-    const req = await axios.post("http://localhost:3000/addclinic", newClionic);
+    const req = await axios.post("http://localhost:3000/addclinic", newClinic);
     dispatch(addClinic(req.data));
   } catch {
     console.log("posting new clinic on server failed");

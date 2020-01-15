@@ -59,7 +59,7 @@ export type IUid = string;
 export interface IPerson {
   firstName: string;
   lastName: string;
-  fullName: string;
+  fullName: string; // TODO: move to server virtual
   gender?: IGender;
   contacts?: Partial<IContact>;
   address?: IAddress;
@@ -72,7 +72,7 @@ export interface IContact {
 }
 
 export interface IAddress {
-  country: string;
+  country?: string;
   city: string;
   state?: string;
   street: string;
@@ -96,7 +96,7 @@ export interface IUser extends IPerson {
 }
 export type IPassword = string;
 
-export type IPhoneNumber = number;
+export type IPhoneNumber = string;
 export type IEmailAddress = string;
 export type INoId<M> = Pick<M, Exclude<keyof M, "_id">>;
 export type IPropsObj = Partial<IClinic> | Partial<IDoctor>;
