@@ -8,6 +8,7 @@ export interface IDoctor extends IPerson {
   specialization: string;
   title: string;
   clinics: IUid[];
+  comments?: string;
 }
 
 export type IHashMap<T> = {
@@ -50,7 +51,7 @@ export interface IVisitResult {
 export interface IMedication {
   medicationId: IUid;
   title: string;
-  prescripedUsage: string;
+  prescribedUsage: string;
   dosage: string;
 }
 export type IUid = string;

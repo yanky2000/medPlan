@@ -6,7 +6,9 @@ export const formState = {
   login: "",
   clinic: "",
   date: "",
-  doctor: ""
+  doctor: "",
+  specialization: "",
+  comments: ""
   // TODO: Should i put initial values here?
 };
 
